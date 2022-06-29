@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string("apellidos", 100);
             $table->string("dni", 8);
             $table->string("nombre_usuario", 50);
-            $table->string("password", 255);
             $table->integer("estado");
-            $table->string("rol");
             $table->integer("id_departamento");
             $table->integer("id_provincia");
             $table->integer("id_distrito");
+            $table->integer("id_user");
             $table->timestamps();
         });
     }

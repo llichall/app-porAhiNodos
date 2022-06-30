@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(): BelongsTo
+    {
+        // indicamos que el usuario va tener 1 solo rol
+        return $this->belongsTo(Rol::class);
+    }
 }

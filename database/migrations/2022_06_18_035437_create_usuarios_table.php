@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("nombres", 100);
             $table->string("apellidos", 100);
             $table->string("dni", 8);
-            $table->string("nombre_usuario", 50);
             $table->integer("estado");
             $table->integer("id_departamento");
             $table->integer("id_provincia");

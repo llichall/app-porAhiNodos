@@ -22,8 +22,9 @@ return new class extends Migration
             $table->integer("id_departamento");
             $table->integer("id_provincia");
             $table->integer("id_distrito");
-            $table->unsignedBigInteger("usuario_id");
-            $table->foreign("user_id")->references("id")->on("usuario");
+
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users");
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publicacions');
+        Schema::dropIfExists('publicaciones');
     }
 };

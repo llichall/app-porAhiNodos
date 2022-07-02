@@ -24,7 +24,7 @@ class PublicacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.registrarPublicacion');
     }
 
     /**

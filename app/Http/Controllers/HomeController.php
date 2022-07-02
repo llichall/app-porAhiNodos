@@ -28,6 +28,10 @@ class HomeController extends Controller
     {
         $usuario = DB::table('usuario')->where('id_user', Auth::user()->id)->first();
         session(["usuario" => $usuario]);
-        return view('home');
+       
+        if (Auth::user()->role_id == 2) {
+            return view('user.home');    
+        }
+        return view('admin.home');
     }
 }

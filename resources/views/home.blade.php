@@ -24,10 +24,27 @@
         </div>
         <div class="content col py-3">
             <div class="row justify-content-center">
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-1">
+                                <label for="exampleFormControlTextarea1" class="form-label">Publicar nueva alerta</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFileSm" class="form-label">Imgen</label>
+                                <input class="form-control form-control-sm" id="formFileSm" type="file">
+                            </div>
+                            <div class="d-flex justify-content-center mb-0">
+                                <button type="button" class="btn btn-primary">publicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">{{ __('Dashboard') }}</div>
-                        
+
                         <div class="card-body">
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">

@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">Alertas</div>
 
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -17,7 +17,26 @@
                             @endif
 
                             {{ __('You are logged in!') }}
+                        </div> -->
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach($publicaciones as $p)
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="d-flex">
+                                <img class="me-3 rounded-circle" src="https://iconarchive.com/download/i102645/graphicloads/flat-finance/person.ico" alt="img" width="60px" height="60px" />
+                                <div>
+                                    <h5 class="fw-bold"> {{ Auth::user()->name }} </h5>
+                                    {{ $p->updated_at }}
+                                </div>
+                            </div>
+                            <p class="m-lg-1 mt-1"> {{ $p->descripcion }} </p>
+                            <img class="img-fluid mt-3 border rounded" src="/imagen/{{$p->imagen }}" alt="{{ $p->imagen }}">
+                            <h6 class="m-lg-1 mt-1"> xd </h6>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

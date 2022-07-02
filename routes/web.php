@@ -27,6 +27,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/registrarPub', [PublicacionController::class, 'create'])->name('regPub');
 Route::post('/registrarPub', [PublicacionController::class, 'store'])->name('regPub');
+Route::get('/publicaciones', [PublicacionController::class, 'index'])->name('index');
+
 Route::get('/loadDepartamentos', [DepartamentoController::class, 'showAll']);
 Route::get('/loadProvincias/{id}', [ProvinciaController::class, 'showAll']);
 Route::get('/loadDistritos/{id}', [DistritoController::class, 'showAll']);

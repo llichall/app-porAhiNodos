@@ -30,7 +30,7 @@ class HomeController extends Controller
         session(["usuario" => $usuario]);
        
         if (Auth::user()->role_id == 2) {
-            return view('user.home');    
+            return redirect('/publicaciones');    
         }
         return view('admin.home');
     }

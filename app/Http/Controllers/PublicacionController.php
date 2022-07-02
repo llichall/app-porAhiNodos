@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Publicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PublicacionController extends Controller
 {
@@ -14,7 +16,8 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        //
+       $publicaciones =  Publicacion::paginate(10);
+        return view('user.home', compact("publicaciones"));
     }
 
     /**
@@ -35,7 +38,27 @@ class PublicacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $publicacion = new Publicacion();
+        $publicacion->descripcion = $request->input("descripcion");
+        $publicacion->lugar_especifico = $request->input("lugarEspecifico");
+        $publicacion->id_departamento = $request->input("departamento");
+        $publicacion->id_provincia = $request->input("provincia");
+        $publicacion->id_distrito = $request->input("distrito");
+        $publicacion->estado = 1; 
+        $usuario_bd = DB::table('usuario')->where('id_user', Auth::user()->id)->first();
+        $publicacion->usuario_id = $usuario_bd->id;
+
+        // $publicacion = $request->all();
+        if ($imagen = $request->file('imagen')) {
+            $rutaGuardarImg = "imagen/";
+            $imagenPublicacion = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenPublicacion);
+            // $publicacion["imagen"] = "$imgenPublicacion"; 
+            $publicacion->imagen = "$imagenPublicacion";
+        }
+        // dd($publicacion);
+        $publicacion->save();
+        return view('user.home');
     }
 
     /**

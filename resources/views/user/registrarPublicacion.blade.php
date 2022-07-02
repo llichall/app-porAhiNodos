@@ -5,7 +5,7 @@
         <h5 class="card-title">Publicar nueva alerta</h5>
         <div class="card-body text-center">
             <div class="row">
-                <form method="post" action="{{ route('publicacion.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('regPub') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col">
                         <div class="form-floating mb-3">
@@ -13,7 +13,7 @@
                             <label for="floatingTextarea2">Descripción</label>
                         </div>
                         <div class="mb-2">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="archivo">
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="imagen">
                         </div>
                     </div>
                     <div class="col">

@@ -16,7 +16,10 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-       $publicaciones =  Publicacion::paginate(10);
+        $publicaciones = DB::table("publicaciones")
+            ->join("usuario", "publicaciones.usuario_id", "=", "usuario");
+
+        dd($publicaciones);
         return view('user.home', compact("publicaciones"));
     }
 
@@ -44,7 +47,7 @@ class PublicacionController extends Controller
         $publicacion->id_departamento = $request->input("departamento");
         $publicacion->id_provincia = $request->input("provincia");
         $publicacion->id_distrito = $request->input("distrito");
-        $publicacion->estado = 1; 
+        $publicacion->estado = 1;
         $usuario_bd = DB::table('usuario')->where('id_user', Auth::user()->id)->first();
         $publicacion->usuario_id = $usuario_bd->id;
 

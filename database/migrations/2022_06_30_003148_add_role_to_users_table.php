@@ -14,6 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string("nombres", 100);
+            $table->string("apellidos", 100);
+            $table->string("img", 180)->nullable();
+            $table->integer("id_departamento")->nullable();
+            $table->integer("id_provincia")->nullable();
+            $table->integer("id_distrito")->nullable();
             // agregando estado a los usuairos, 1 activo, 0 aliminado
             $table->integer("estado");
             // creamos el "role_id" en este formato

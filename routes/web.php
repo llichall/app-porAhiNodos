@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\DistritoController;
+use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\PublicacionController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/registrarPub', [PublicacionController::class, 'create'])->name('regPub');
+Route::post('/registrarPub', [PublicacionController::class, 'store'])->name('regPub');
+Route::get('/loadDepartamentos', [DepartamentoController::class, 'showAll']);
+Route::get('/loadProvincias/{id}', [ProvinciaController::class, 'showAll']);
+Route::get('/loadDistritos/{id}', [DistritoController::class, 'showAll']);

@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
+    public function showAll() {
+        $departamentos = DB::table('departamento')->get();
+        return response()->json($departamentos);
+    }
+
     /**
      * Display a listing of the resource.
      *

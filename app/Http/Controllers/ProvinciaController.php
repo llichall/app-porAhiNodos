@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Provincia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProvinciaController extends Controller
 {
+    public function showAll(Request $request, $id_departamento) {
+        $provincias = DB::table('provincia')->where("departamento_id", $id_departamento)->get();
+        return response()->json($provincias);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Distrito;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DistritoController extends Controller
 {
+
+    public function showAll(Request $request, $id_provincia)
+    {
+        $provincias = DB::table('distrito')->where("provincia_id", $id_provincia)->get();
+        return response()->json($provincias);
+    }
+
     /**
      * Display a listing of the resource.
      *

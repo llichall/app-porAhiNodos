@@ -17,11 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string("nombres", 100);
             $table->string("apellidos", 100);
-            $table->string("dni", 8);
-            $table->integer("estado");
-            $table->integer("id_departamento");
-            $table->integer("id_provincia");
-            $table->integer("id_distrito");
+            $table->string("img", 180)->nullable();
+            $table->integer("id_departamento")->nullable();
+            $table->integer("id_provincia")->nullable();
+            $table->integer("id_distrito")->nullable();
             $table->integer("id_user");
             $table->timestamps();
         });

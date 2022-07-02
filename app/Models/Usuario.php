@@ -13,13 +13,10 @@ class Usuario extends Model
         "usuario_id",
         "nombres",
         "apellidos",
-        "dni",
-        "nombre_usuario",
-        "password",
-        "estado",
-        "rol",
+        "img",
         "id_departamento",
         "id_provincia",
-        "id_distrito"
+        "id_distrito",
+        "id_user",
     ];
 }

@@ -19,6 +19,27 @@ class Publicacion extends Model
         "id_departamento",
         "id_provincia",
         "id_distrito",
-        "usuario_id"
+        "user_id"
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class, "id_departamento", "id");
+    }
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class, "id_provincia", "id");
+    }
+
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class, "id_distrito", "id");
+    }
 }

@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nombres',
+        'apellidos',
+        'img',
+        'id_departamento',
+        'id_provincia',
+        'id_distrito',
         'estado',
         "role_id"
     ];
@@ -48,5 +54,10 @@ class User extends Authenticatable
     {
         // indicamos que el usuario va tener 1 solo rol
         return $this->belongsTo(Rol::class);
+    }
+
+    public function publicaciones()
+    {
+        return $this->hasMany(Publicacion::class);
     }
 }

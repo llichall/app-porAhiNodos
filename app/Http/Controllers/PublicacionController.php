@@ -16,10 +16,8 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        $publicaciones = DB::table("publicaciones")
-            ->join("usuario", "publicaciones.usuario_id", "=", "usuario");
-
-        dd($publicaciones);
+        $publicaciones = Publicacion
+            ::orderBy("created_at", "desc")::paginate(20)->order;
         return view('user.home', compact("publicaciones"));
     }
 
@@ -48,8 +46,7 @@ class PublicacionController extends Controller
         $publicacion->id_provincia = $request->input("provincia");
         $publicacion->id_distrito = $request->input("distrito");
         $publicacion->estado = 1;
-        $usuario_bd = DB::table('usuario')->where('id_user', Auth::user()->id)->first();
-        $publicacion->usuario_id = $usuario_bd->id;
+        $publicacion->user_id = Auth::user()->id;
 
         // $publicacion = $request->all();
         if ($imagen = $request->file('imagen')) {
@@ -61,7 +58,7 @@ class PublicacionController extends Controller
         }
         // dd($publicacion);
         $publicacion->save();
-        return view('user.home');
+        return redirect("/publicaciones");
     }
 
     /**

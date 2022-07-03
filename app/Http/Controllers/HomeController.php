@@ -26,8 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $usuario = DB::table('usuario')->where('id_user', Auth::user()->id)->first();
-        session(["usuario" => $usuario]);
        
         if (Auth::user()->role_id == 2) {
             return redirect('/publicaciones');    

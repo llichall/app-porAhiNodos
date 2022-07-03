@@ -32,6 +32,13 @@ Route::get('/publicaciones', [PublicacionController::class, 'index'])->name('ind
 Route::get('/publicaciones/reportar/{id}', [PublicacionController::class, 'reportar'])->name("publicaciones.reportarget");
 Route::post('/publicaciones/reportar', [PublicacionController::class, 'saveReporte'])->name("publicaciones.reportar");
 
+
+
+Route::get('/publicaciones/reportar/{id}', [PublicacionController::class, 'reportar'])->name("publicaciones.reportarget");
+Route::get('/publicaciones/reportados', [PublicacionController::class, 'showPublicacionesReportadas'])->name("publicaciones.reportados");
+Route::get('/publicaciones/ver', [PublicacionController::class, 'showPublicacionReportado'])->name("publicaciones.reportado.ver");
+
+
 Route::get('/loadDepartamentos', [DepartamentoController::class, 'showAll']);
 Route::get('/loadProvincias/{id}', [ProvinciaController::class, 'showAll']);
 Route::get('/loadDistritos/{id}', [DistritoController::class, 'showAll']);

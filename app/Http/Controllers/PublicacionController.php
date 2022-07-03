@@ -134,8 +134,33 @@ class PublicacionController extends Controller
         }
 
         Reportes::create($reporte);
-        
+
         return redirect(Route("publicaciones.reportarget", $reporte["publicacion_id"]))
             ->with("success", "su reporte se antenderá pronto, muchas gracias!!!");
+    }
+
+    public function showPublicacionesReportadas()
+    {
+        $publicaciones = DB::table('publicaciones')
+            ->select(
+                "reportes.publicacion_id",
+                DB::raw("count(reportes.publicacion_id) as cant_reportes")
+            )
+            ->join("reportes", "publicaciones.id", "=", "reportes.publicacion_id")
+            ->groupBy(
+                "reportes.publicacion_id"
+            )
+            ->orderBy("cant_reportes", "desc")
+            ->get();
+
+        foreach ($publicaciones as $p) {
+            $p->publicacion = Publicacion::where("id", $p->publicacion_id)->first();
+        }
+        return view("admin.publicaciones_reportes", compact("publicaciones"));
+    }
+
+    public function showPublicacionReportado(Request $request, $id)
+    {
+        return view("admin.piblicaciones_reporte");
     }
 }

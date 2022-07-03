@@ -41,7 +41,7 @@
                 <h6 class="m-lg-1 mt-1"> {{$p->departamento->nombre}} - {{$p->provincia->nombre}} - {{$p->distrito->nombre}}</h6>
                 <h6 class="m-lg-1 mt-1"> {{$p->lugar_especifico }}</h6>
                 <div class="d-flex justify-content-center mb-0">
-                    <a class="btn btn-danger" href="{{route('publicaciones.reportar', $p->id)}}">
+                    <a class="btn btn-danger" href="{{route('publicaciones.reportarget', $p->id)}}">
                         Reporatar noticia falsa
                     </a>
                 </div>

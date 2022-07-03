@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publicacion;
+use App\Models\Reportes;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -110,5 +112,30 @@ class PublicacionController extends Controller
     {
         $publicacion = Publicacion::where("id", $id)->first();
         return view('user.reportarPublicacion', compact("publicacion"));
+    }
+
+    public function saveReporte(Request $request)
+    {
+        $request->validate([
+            "motivo" => "required",
+        ]);
+
+        $reporte = $request->all();
+
+        $exsitsReporte = Reportes::where([
+            "user_id" => $reporte["user_id"],
+            "publicacion_id" => $reporte["publicacion_id"]
+        ])->first();
+
+        if ($exsitsReporte != null) {
+            return redirect()->back()->withErrors([
+                "reprote" => "no puedes reportar la misma publicación mas de 2 veces",
+            ]);
+        }
+
+        Reportes::create($reporte);
+        
+        return redirect(Route("publicaciones.reportarget", $reporte["publicacion_id"]))
+            ->with("success", "su reporte se antenderá pronto, muchas gracias!!!");
     }
 }

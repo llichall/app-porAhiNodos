@@ -16,8 +16,8 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        $publicaciones = Publicacion
-            ::orderBy("created_at", "desc")::paginate(20)->order;
+        $publicaciones = Publicacion::orderBy("created_at", "desc")
+            ->paginate(10);
         return view('user.home', compact("publicaciones"));
     }
 
@@ -104,5 +104,11 @@ class PublicacionController extends Controller
     public function destroy(Publicacion $publicacion)
     {
         //
+    }
+
+    public function reportar(Request $request, $id)
+    {
+        $publicacion = Publicacion::where("id", $id)->first();
+        return view('user.reportarPublicacion', compact("publicacion"));
     }
 }

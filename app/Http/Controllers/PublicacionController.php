@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publicacion;
 use App\Models\Reportes;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
@@ -103,9 +104,13 @@ class PublicacionController extends Controller
      * @param  \App\Models\Publicacion  $publicacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Publicacion $publicacion)
+    public function destroy(Request $request, $id)
     {
-        //
+        Reportes::where("publicacion_id", $id)->delete();
+        $publicacion = Publicacion::find($id);
+        $publicacion->delete();
+        return redirect(Route("publicaciones.reportados"))
+        ->with("success", "la publicacion fue dada de baja correctamente!!!");
     }
 
     public function reportar(Request $request, $id)
@@ -161,6 +166,11 @@ class PublicacionController extends Controller
 
     public function showPublicacionReportado(Request $request, $id)
     {
-        return view("admin.piblicaciones_reporte");
+        $publicacion = Publicacion::where("id", $id)->first();
+        $reportes = Reportes::where("publicacion_id", $id)->get();
+        foreach($reportes as $r) {
+            $r->user = User::where("id", $r->user_id)->first();
+        }
+        return view("admin.publicaciones_reporte", compact("publicacion", "reportes"));
     }
 }

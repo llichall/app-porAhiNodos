@@ -7,6 +7,21 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="">
+
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        @if (Session::get('success'))
+                        <div class="alert alert-success"> {{ Session::get('success') }}</div>
+                        @endif
+
                         <table class="table">
                             <h5>Publicaciones Denunciadas como Falsas</h5>
                             <thead>
@@ -27,10 +42,12 @@
                                     <td>{{$p->cant_reportes}}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a class="btn btn-success me-2" href="#">
+                                            <a class="btn btn-success me-2" 
+                                            href="{{route('publicaciones.reportado.ver', $p->publicacion_id)}}">
                                                 ver
                                             </a>
-                                            <a class="btn btn-danger" href="#">
+                                            <a class="btn btn-danger" 
+                                            href="{{route('publicaciones.eliminar', $p->publicacion_id)}}">
                                                 dar de baja
                                             </a>
                                         </div>

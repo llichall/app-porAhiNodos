@@ -36,7 +36,9 @@ Route::post('/publicaciones/reportar', [PublicacionController::class, 'saveRepor
 
 Route::get('/publicaciones/reportar/{id}', [PublicacionController::class, 'reportar'])->name("publicaciones.reportarget");
 Route::get('/publicaciones/reportados', [PublicacionController::class, 'showPublicacionesReportadas'])->name("publicaciones.reportados");
-Route::get('/publicaciones/ver', [PublicacionController::class, 'showPublicacionReportado'])->name("publicaciones.reportado.ver");
+Route::get('/publicaciones/ver/{id}', [PublicacionController::class, 'showPublicacionReportado'])->name("publicaciones.reportado.ver");
+Route::get('/publicaciones/eliminar/{id}', [PublicacionController::class, 'destroy'])
+    ->name("publicaciones.eliminar");
 
 
 Route::get('/loadDepartamentos', [DepartamentoController::class, 'showAll']);

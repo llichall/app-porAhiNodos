@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Provincia;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,11 @@ return new class extends Migration
             $table->foreign("departamento_id")->references("id")->on("departamento");
             $table->timestamps();
         });
+
+        $provincia = new Provincia();
+        $provincia->nombre = "Huánuco";
+        $provincia->departamento_id = 1;
+        $provincia->save();
     }
 
     /**

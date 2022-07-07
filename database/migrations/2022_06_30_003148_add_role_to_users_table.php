@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -27,6 +30,19 @@ return new class extends Migration
             // referenciamos
             $table->foreign('role_id')->references('id')->on('roles');
         });
+
+        $admin = new User();
+        $admin->nombres = "admin";
+        $admin->apellidos = "admin";
+        $admin->img = "default.png";
+        $admin->name = "admin";
+        $admin->email = "admin@admin.com";
+        $admin->password = Hash::make('admin');
+        $admin->estado = 1;
+        $admin->role_id = 1; // admin
+        $admin->email_verified_at = now();
+        $admin->remember_token = Str::random(10);
+        $admin->save();
     }
 
     /**

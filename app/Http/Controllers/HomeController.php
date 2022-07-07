@@ -26,9 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
         if (Auth::user()->role_id == 2) {
-            return redirect('/publicaciones');    
+            return redirect('/publicaciones');
         }
         return view('admin.home');
     }

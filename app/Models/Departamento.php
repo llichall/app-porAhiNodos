@@ -14,8 +14,8 @@ class Departamento extends Model
         "nombre"
     ];
 
-    // public function publicaciones()
-    // {
-    //     return $this->hasMany(Publicacion::class, "departamento_id", "departamento_id");
-    // }
+    public function publicaciones()
+    {
+        return $this->hasMany(Publicacion::class, "departamento_id", "departamento_id");
+    }
 }

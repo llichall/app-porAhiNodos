@@ -14,7 +14,7 @@
                         <div class="row mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">Nombres</label>
                         <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('nombres') is-invalid @enderror" name="nombres" value="{{ old('nombres') }}" required autocomplete="name" autofocus>
+                                <input id="nombre" type="text" class="form-control @error('nombres') is-invalid @enderror" name="nombres" value="{{ old('nombres') }}" required autocomplete="off" autofocus>
 
                                 @error('nombres')
                                     <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                         <div class="row mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">Apellidos</label>
                         <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="{{ old('apellidos') }}" required autocomplete="name" autofocus>
+                                <input id="nombre" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="{{ old('apellidos') }}" required autocomplete="off" autofocus>
 
                                 @error('apellidos')
                                     <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">Nombre de Usuario</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="off" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">Correo</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

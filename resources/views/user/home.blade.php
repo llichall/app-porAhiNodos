@@ -48,6 +48,10 @@
             </div>
             @endforeach
 
+            <div class="d-flex justify-content-center">
+                {{$publicaciones->links()}}
+            </div>
+
         </div>
     </div>
 </div>

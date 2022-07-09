@@ -20,7 +20,7 @@ class PublicacionController extends Controller
     public function index()
     {
         $publicaciones = Publicacion::orderBy("created_at", "desc")
-            ->paginate(10);
+            ->simplePaginate(10);
         return view('user.home', compact("publicaciones"));
     }
 
@@ -51,15 +51,12 @@ class PublicacionController extends Controller
         $publicacion->estado = 1;
         $publicacion->user_id = Auth::user()->id;
 
-        // $publicacion = $request->all();
         if ($imagen = $request->file('imagen')) {
             $rutaGuardarImg = "imagen/";
             $imagenPublicacion = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
-            $imagen->move($rutaGuardarImg, $imagenPublicacion);
-            // $publicacion["imagen"] = "$imgenPublicacion"; 
+            $imagen->move($rutaGuardarImg, $imagenPublicacion); 
             $publicacion->imagen = "$imagenPublicacion";
         }
-        // dd($publicacion);
         $publicacion->save();
         return redirect("/publicaciones");
     }
@@ -124,7 +121,6 @@ class PublicacionController extends Controller
         $request->validate([
             "motivo" => "required",
         ]);
-
         $reporte = $request->all();
 
         $exsitsReporte = Reportes::where([

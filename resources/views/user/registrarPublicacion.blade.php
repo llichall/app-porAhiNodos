@@ -27,7 +27,7 @@
                             <option selected value='0'>Distrito</option>
                         </select>
                         <div class="mb-3">
-                            <input class="form-control" id="formFileSm" type="text" placeholder="lugar específico" name="lugarEspecifico">
+                            <input class="form-control" id="formFileSm" type="text" placeholder="lugar específico" name="lugarEspecifico" autocomplete="off">
                         </div>
                     </div>
             </div>
